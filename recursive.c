@@ -1,4 +1,8 @@
 /*
+
+
+The maximal-sum subarray either uses the last element in the input array, or it doesn’t
+
 //recursive
 dynamic (numbersArray, length, i)
 	if i == length - 1 //base case
@@ -17,7 +21,7 @@ max = 13
 */
 
 
-int dynamicRecursive(int *numbersArray, long length, int i)
+int recursive(int *numbersArray, long length, int i)
 {
 	int sum = numbersArray[i] + numbersArray[i+1];
 	if (i == length - 2){ //base case
@@ -29,5 +33,5 @@ int dynamicRecursive(int *numbersArray, long length, int i)
 	}
 	if (sum > numbersArray[i+1])
 		numbersArray[i+1] = sum;
-	return dynamicRecursive(numbersArray, length, i + 1);
+	return recursive(numbersArray, length, i + 1);
 }

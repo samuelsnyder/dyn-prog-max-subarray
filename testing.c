@@ -4,7 +4,7 @@
 #include "a2.c"
 #include "a3.c"
 #include "dynamic.c"
-
+#include "recursive.c"
 #include <time.h>
 
 int main(){
@@ -103,9 +103,28 @@ int main(){
 		} 
 	}
     
+
+    	//dynamic programming recursive
+	printf("\n recursive solution\n");
+	printf("Test#\ttime\tsum\tresult\n");
+	for (i = 0; i < 9; i++){
+		start = clock();
+		sum = recursive(testArr[i], sizeof(testArr[i])/sizeof(testArr[i][0]), 0);
+		end = clock();
+		clockTime = ((double) (end - start))/CLOCKS_PER_SEC;
+		
+		if (sum == testAns[i]){
+			printf("%d\t%d\t%d\tpassed\n",i + 1, clockTime, sum);
+		} 
+		else 
+		{ 
+			printf("%d\t%d\t%d\tfailed\n",i + 1, clockTime, sum);
+		} 
+	}
+
     
 	//dynamic programming
-	printf("\n\ndynamic programming\n");
+	printf("\n\ndynamic programming iterative\n");
 	printf("Test#\ttime\tsum\tresult\n");
 	for (i = 0; i < 9; i++){
 		start = clock();
@@ -160,9 +179,22 @@ int main(){
 		printf("%d\t%E\t%d\t%d\n",i + 1, clockTime, sum, numElements[i]);
 	}
     
+
+	//recursive
+	printf("\nrecursive solution\n");
+	printf("Test#\ttime\tsum\telements\n");
+	for (i = 0; i < 18	; i++){
+		start = clock();
+		sum = recursive(elementArray, numElements[i], 0);
+		end = clock();
+		clockTime = ((double) (end - start))/CLOCKS_PER_SEC;
+		printf("%d\t%E\t%d\t%d\n",i + 1, clockTime, sum, numElements[i]);
+
+	}
+
     
 	//dynamic programming
-	printf("\n\ndynamic programming\n");
+	printf("\n\ndynamic programming iterative\n");
 	printf("Test#\ttime\tsum\telements\n");
 	for (i = 8; i < 27	; i++){
 		start = clock();
@@ -171,6 +203,7 @@ int main(){
 		clockTime = ((double) (end - start))/CLOCKS_PER_SEC;
 		printf("%d\t%E\t%d\t%d\n",i + 1, clockTime, sum, numElements[i]);
 
-	}    
+	} 
+
 	return 0;
 }
